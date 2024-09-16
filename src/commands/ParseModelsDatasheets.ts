@@ -20,6 +20,8 @@ export default class ParseModelsDatasheets extends Command {
             fs.createReadStream(args.srcPath)
                 .pipe(csv({
                     separator: columnSeparator,
+                    mapHeaders: ({ header, index }) => header.trim(),
+                    quote: '\''
                 }))
                 .on('data', (data) => results.push(this.mapToModelDatasheetEntry(data)))
                 .on('end', () => {
@@ -42,7 +44,7 @@ export default class ParseModelsDatasheets extends Command {
 
     private mapToModelDatasheetEntry(data: any): ModelDatasheetEntry {
         return new ModelDatasheetEntry(
-            data['datasheet_id'] ?? '',
+            data['datasheet_id'],
             data['name'] ?? '',
             data['T'] ?? 0,
             data['Sv'] ?? 0,
