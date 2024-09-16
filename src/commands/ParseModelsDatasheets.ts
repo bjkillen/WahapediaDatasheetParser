@@ -12,13 +12,13 @@ export default class ParseModelsDatasheets extends Command {
 	public async run(): Promise<void> {
 		const { args } = await this.parse(ParseModelsDatasheets);
 
+        const columnSeparator = "|";
         let results = [];
 
         return new Promise((resolve) => {
             fs.createReadStream(args.srcPath)
                 .pipe(csv({
-                    separator: "|",
-                    headers: true
+                    separator: columnSeparator,
                 }))
                 .on('data', (data) => results.push(data))
                 .on('end', () => {
