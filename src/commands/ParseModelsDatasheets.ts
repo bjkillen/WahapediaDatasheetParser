@@ -22,13 +22,10 @@ export default class ParseModelsDatasheets extends Command {
                 }))
                 .on('data', (data) => results.push(data))
                 .on('end', () => {
-                    // converting the JSON object to a string
                     const data = JSON.stringify(results);
                     const fileName = path.parse(args.srcPath).name;
 
                     fs.writeFile(`${fileName}.json`, data, (error) => {
-                        // throwing the error
-                        // in case of a writing problem
                         if (error) {
                             // logging the error
                             console.error(error);
