@@ -1,5 +1,4 @@
 import csv from "csv-parser";
-import * as path from "path";
 import fs from "fs";
 
 class WahapediaExportParser {
@@ -7,7 +6,7 @@ class WahapediaExportParser {
     static baseCsvOptions = {
             separator: this.columnSeparator,
             mapHeaders: ({ header }) => header.trim(),
-            quote: '\''
+            quote: ''
         };
 
     static async ParseFile<Type>(path: string, mapFunc: (data: any) => Type) {
