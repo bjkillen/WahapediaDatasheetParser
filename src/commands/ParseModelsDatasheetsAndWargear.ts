@@ -25,8 +25,6 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 		modelDatasheetResults.forEach((modelDatasheet) => {
 			if (unitDatasheetResults.has(modelDatasheet.datasheetId)) {
 				unitDatasheetResults.get(modelDatasheet.datasheetId).modelDatasheets.push(modelDatasheet);
-			} else {
-				// console.log(modelDatasheet.datasheetId);
 			}
 		})
 
@@ -34,9 +32,7 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 
 		wargearResults.forEach((wargear) => {
 			if (unitDatasheetResults.has(wargear.datasheetId)) {
-				unitDatasheetResults.get(wargear.datasheetId).wargear.push(wargear)
-			} else {
-				// console.log(wargear.datasheetId)
+			unitDatasheetResults.get(wargear.datasheetId).wargear.push(wargear)
 			}
 		});
 
