@@ -32,7 +32,7 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 
 		wargearResults.forEach((wargear) => {
 			if (unitDatasheetResults.has(wargear.datasheetId)) {
-			unitDatasheetResults.get(wargear.datasheetId).wargear.push(wargear)
+				unitDatasheetResults.get(wargear.datasheetId).wargear.push(wargear)
 			}
 		});
 
@@ -41,7 +41,9 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 		unitDatasheetResults.forEach((unitDatasheet) => {
 			if (factionResults.has(unitDatasheet.factionId)) {
 				factionResults.get(unitDatasheet.factionId).unitDatasheets.push(unitDatasheet);
-			} 
+			} else {
+				console.log(unitDatasheet.factionId);
+			}
 		});
 
 		const data = JSON.stringify(Object.fromEntries(factionResults));
@@ -53,6 +55,10 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 
 				throw error;
 			}
+
+			console.log(`Units Parsed: ${unitDatasheetResults.size}`);
+			console.log(`Models Parsed: ${modelDatasheetResults.length}`);
+			console.log(`Wargear Parsed: ${wargearResults.length}`);
 
 			console.log('Export Complete!');
 		});
