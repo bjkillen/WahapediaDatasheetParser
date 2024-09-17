@@ -6,7 +6,7 @@ import ModelDatasheetParser from "../models/ModelDatasheetParser";
 import WargearParser from "../models/WargearParser";
 import UnitDatasheetParser from "../models/UnitDatasheetParser";
 import FactionParser from "../models/FactionParser";
-import { UnitDatasheet } from "gamesworkshopcalculator.common";
+import { TypedJSON, FactionsMap } from "gamesworkshopcalculator.common";
 
 export default class ParseModelsDatasheetsAndWargear extends Command {
 	static override args = {
@@ -46,7 +46,8 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 			}
 		});
 
-		const data = JSON.stringify(Object.fromEntries(factionResults));
+		const serializer = new TypedJSON(FactionsMap);
+		const data = serializer.stringify(new FactionsMap(factionResults));
 
 		fs.writeFile(`ExportedFactionsWithDatasheets.json`, data, (error) => {
 			if (error) {

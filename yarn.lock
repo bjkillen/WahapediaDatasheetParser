@@ -294,9 +294,12 @@ fill-range@^7.1.1:
     to-regex-range "^5.0.1"
 
 gamesworkshopcalculator.common@^1.0.0:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.13.tgz#19ea249b482a0e04d81d4fee5f2ab352c27b73b8"
-  integrity sha512-Ja0NbZcquS3iC9LezYKOfm2BrviSawQTZeiMRjVak1uUekOCvGHEGJXOvfUaI4yqjVQsvVKkofbdjpk9UQ4UGg==
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.18.tgz#169cf2a1cf773a570b3dc919d0b3311ebcfc6df9"
+  integrity sha512-C7q5I0dOeqdAYw8VTPYgC/uTf3weyPfVP8NQl4PcsoKTO3OGq0t27uQC2XsYh31EAbeKTPJqVKqU33HmMvwj+A==
+  dependencies:
+    reflect-metadata "^0.2.2"
+    typedjson "^1.8.0"
 
 get-package-type@^0.1.0:
   version "0.1.0"
@@ -450,6 +453,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+reflect-metadata@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.2.2.tgz#400c845b6cba87a21f2c65c4aeb158f4fa4d9c5b"
+  integrity sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==
+
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/reusify/-/reusify-1.0.4.tgz"
@@ -523,10 +531,22 @@ ts-node@^10.9.2:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
+tslib@^2.0.1:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.7.0.tgz#d9b40c5c40ab59e8738f297df3087bf1a2690c01"
+  integrity sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==
+
 type-fest@^0.21.3:
   version "0.21.3"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
+
+typedjson@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/typedjson/-/typedjson-1.8.0.tgz#7ed7200f88c1240821c7e69d6d121667988e5d1d"
+  integrity sha512-taVJVGebQDagEmVc3Cu6vVVLkWLnxqPcTrkVgbpAsI02ZDDrnHy5zvt1JVqXv4/yztBgZAX1oR07+bkiusGJLQ==
+  dependencies:
+    tslib "^2.0.1"
 
 typescript@^5.6.2:
   version "5.6.2"

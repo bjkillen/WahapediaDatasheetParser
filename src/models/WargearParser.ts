@@ -13,11 +13,11 @@ class WargearParser {
             data['datasheet_id'],
             data['name'] ?? '',
             data['description'] ?? '',
-            data['A'] ?? 0,
-            wargearSkill?.value,
-            data['S'] ?? 0,
-            data['AP'] ?? 0,
-            data['D'] ?? 0
+            Number(data['A']) ?? 0,
+            wargearSkill,
+            Number(data['S']) ?? 0,
+            Number(data['AP']) ?? 0,
+            Number(data['D']) ?? 0
         )
 
         return value;
