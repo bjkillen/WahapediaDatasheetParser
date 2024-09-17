@@ -8,6 +8,7 @@
   "dependencies": {
     "@oclif/core": "^4.0.22",
     "csv-parser": "^3.0.0",
+    "gamesworkshopcalculator.common": "^1.0.0",
     "typescript": "^5.6.2"
   },
   "bin": {
