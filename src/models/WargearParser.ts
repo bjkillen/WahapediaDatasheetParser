@@ -1,4 +1,4 @@
-import { DiceSkillValue, Wargear } from "gamesworkshopcalculator.common";
+import { DiceSkillValue, Wargear, WargearType } from "gamesworkshopcalculator.common";
 import WahapediaExportParser from "./WahapediaExportParser";
 
 class WargearParser {
@@ -7,17 +7,19 @@ class WargearParser {
     }
 
     private static mapToWargearEntry(data: any): Wargear {
+        const wargearType = WargearType.parse(data['type']);
         const wargearSkill = DiceSkillValue.parseNumerical(Number(data['BS_WS']));
 
         const value = new Wargear(
             data['datasheet_id'],
             data['name'] ?? '',
             data['description'] ?? '',
-            Number(data['A']) ?? 0,
+            wargearType,
+            data['A'],
             wargearSkill,
             Number(data['S']) ?? 0,
             Number(data['AP']) ?? 0,
-            Number(data['D']) ?? 0
+            data['D']
         )
 
         return value;
