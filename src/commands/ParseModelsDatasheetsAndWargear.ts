@@ -7,13 +7,15 @@ import WargearParser from "../models/WargearParser";
 import UnitDatasheetParser from "../models/UnitDatasheetParser";
 import FactionParser from "../models/FactionParser";
 import { TypedJSON, FactionsMap } from "gamesworkshopcalculator.common";
+import KeywordParser from "../models/DatasheetKeywordsParser";
 
 export default class ParseModelsDatasheetsAndWargear extends Command {
 	static override args = {
 		factionsSrcPath: Args.string(),
 		unitDatasheetsSrcPath: Args.string(),
 		modelDatasheetsSrcPath: Args.string(),
-        wargearSrcPath: Args.string()
+        wargearSrcPath: Args.string(),
+		keywordsSrcPath: Args.string()
 	};
 
 	public async run(): Promise<void> {
@@ -33,6 +35,14 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 		wargearResults.forEach((wargear) => {
 			if (unitDatasheetResults.has(wargear.datasheetId)) {
 				unitDatasheetResults.get(wargear.datasheetId).wargear.push(wargear)
+			}
+		});
+
+		const keywordsResults = await KeywordParser.ParseFile(args.keywordsSrcPath);
+
+		keywordsResults.forEach((keyword) => {
+			if (unitDatasheetResults.has(keyword.datasheetId)) {
+				unitDatasheetResults.get(keyword.datasheetId).keywords.push(keyword)
 			}
 		});
 
