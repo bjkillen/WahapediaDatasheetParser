@@ -294,9 +294,9 @@ fill-range@^7.1.1:
     to-regex-range "^5.0.1"
 
 gamesworkshopcalculator.common@^1.0.0:
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.28.tgz#ecac288eeddba01622d942e75cabc955a35c941f"
-  integrity sha512-Kdnx9DR0L5qh+pxfXi9X2A2BdXUUAmgeTLC4QJpqVBe1Y7bksmyOAIqmk+ZFiiI8jhCJElw8NaS5zRUfTLsRSw==
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.34.tgz#6290a1ba92fa373d627882b46519d2df267bcae4"
+  integrity sha512-O1D1LwFfq55PaWTtZFakMlYgGgeY4ySWTyoT+SZLhy4lg4N6sw+LQEFJt6DJyRGrN8zDqchLFLjAaMF4LArzgA==
   dependencies:
     reflect-metadata "^0.2.2"
     typedjson "^1.8.0"
@@ -455,7 +455,7 @@ queue-microtask@^1.2.2:
 
 reflect-metadata@^0.2.2:
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.2.2.tgz#400c845b6cba87a21f2c65c4aeb158f4fa4d9c5b"
+  resolved "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.2.2.tgz"
   integrity sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==
 
 reusify@^1.0.4:
