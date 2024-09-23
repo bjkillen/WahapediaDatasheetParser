@@ -3,7 +3,7 @@ import WahapediaExportParser from "./WahapediaExportParser";
 
 class FactionParser {
     static async ParseFile(path: string) {
-        return await WahapediaExportParser.ParseFileMapped<Faction >(path, this.mapToFactionEntry);
+        return await WahapediaExportParser.ParseFileMapped<Faction>(path, this.mapToFactionEntry);
     }
 
     private static mapToFactionEntry(data: any): [string, Faction]  {

@@ -13,6 +13,7 @@ class UnitDatasheetParser {
             data['faction_id'],
             [],
             [],
+            [],
             []
         )
 

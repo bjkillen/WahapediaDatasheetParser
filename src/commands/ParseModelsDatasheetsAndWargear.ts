@@ -9,6 +9,8 @@ import UnitDatasheetParser from "../models/UnitDatasheetParser";
 import FactionParser from "../models/FactionParser";
 import { TypedJSON, FactionsMap } from "gamesworkshopcalculator.common";
 import KeywordParser from "../models/DatasheetKeywordsParser";
+import DatasheetAbilityParser from "../models/DatasheetAbilityParser";
+import AbilityParser from "../models/AbilityParser";
 
 export default class ParseModelsDatasheetsAndWargear extends Command {
 	static override args = {
@@ -45,6 +47,20 @@ export default class ParseModelsDatasheetsAndWargear extends Command {
 		keywordsResults.forEach((keyword) => {
 			if (unitDatasheetResults.has(keyword.datasheetId)) {
 				unitDatasheetResults.get(keyword.datasheetId).keywords.push(keyword)
+			}
+		});
+
+		const abilitiesResults = await AbilityParser.ParseFile(
+			path.join(args.srcDir, 'Abilities.csv'));
+
+		const datasheetAbilitiesResults = await DatasheetAbilityParser.ParseFile(
+			path.join(args.srcDir, 'Datasheets_abilities.csv'),
+			abilitiesResults
+		);
+
+		datasheetAbilitiesResults.forEach((datasheetAbility) => {
+			if (unitDatasheetResults.has(datasheetAbility.datasheetId)) {
+				unitDatasheetResults.get(datasheetAbility.datasheetId).abilities.push(datasheetAbility);
 			}
 		});
 
