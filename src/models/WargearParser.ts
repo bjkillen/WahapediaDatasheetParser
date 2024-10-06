@@ -14,6 +14,7 @@ class WargearParser {
             data['datasheet_id'],
             data['name'] ?? '',
             data['description'] ?? '',
+            Number(data['range']),
             wargearType,
             data['A'],
             wargearSkill,

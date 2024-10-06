@@ -294,9 +294,9 @@ fill-range@^7.1.1:
     to-regex-range "^5.0.1"
 
 gamesworkshopcalculator.common@^1.0.0:
-  version "1.0.38"
-  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.38.tgz#0c69b6e48f194f0904a04de1ce224e390ad4fbeb"
-  integrity sha512-HfTn0p2JC7+UKr7lNetA70XTXTiNO5sZ5sfmJi2eAefY4akSbxY7UjgL6pA9e7XjHHLLCF4tdbUJSdo81nO6MQ==
+  version "1.0.40"
+  resolved "https://registry.yarnpkg.com/gamesworkshopcalculator.common/-/gamesworkshopcalculator.common-1.0.40.tgz#a1912cd59ed8794c79a91ba58225feb160312a4d"
+  integrity sha512-YlnnexF1dT0yR5GRilGa4NbpRBh2A5E+9D7afwejNqZMdkXp/yfgWIzVSGnAFku/32J2wy9mGSwyCT1em9Jx+g==
   dependencies:
     reflect-metadata "^0.2.2"
     typedjson "^1.8.0"

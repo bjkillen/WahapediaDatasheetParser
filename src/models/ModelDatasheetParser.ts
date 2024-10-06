@@ -13,6 +13,7 @@ class ModelDatasheetParser {
         const value = new ModelDatasheet(
             data['datasheet_id'],
             data['name'] ?? '',
+            data['M'] ?? '',
             Number(data['T']) ?? 0,
             armorSaveSkill,
             invulnerableSaveSkill != null,
