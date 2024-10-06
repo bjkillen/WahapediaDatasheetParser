@@ -1,4 +1,4 @@
-import { DiceSkillValue, ModelDatasheet } from "gamesworkshopcalculator.common";
+import { DiceSkillValue, ModelDatasheet, RegexExtension } from "gamesworkshopcalculator.common";
 import WahapediaExportParser from "./WahapediaExportParser";
 
 class ModelDatasheetParser {
@@ -14,11 +14,11 @@ class ModelDatasheetParser {
             data['datasheet_id'],
             data['name'] ?? '',
             data['M'] ?? '',
-            Number(data['T']) ?? 0,
+            RegexExtension.matchNumber(data['T']) ?? 0,
             armorSaveSkill,
             invulnerableSaveSkill != null,
             invulnerableSaveSkill,
-            Number(data['W']) ?? 0
+            RegexExtension.matchNumber(data['W']) ?? 0
         )
 
         return value;

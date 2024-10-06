@@ -1,4 +1,4 @@
-import { DiceSkillValue, Wargear, WargearType } from "gamesworkshopcalculator.common";
+import { DiceSkillValue, RegexExtension, Wargear, WargearType } from "gamesworkshopcalculator.common";
 import WahapediaExportParser from "./WahapediaExportParser";
 
 class WargearParser {
@@ -14,12 +14,12 @@ class WargearParser {
             data['datasheet_id'],
             data['name'] ?? '',
             data['description'] ?? '',
-            Number(data['range']),
+            RegexExtension.matchNumber(data['range']),
             wargearType,
             data['A'],
             wargearSkill,
-            Number(data['S']) ?? 0,
-            Number(data['AP']) ?? 0,
+            RegexExtension.matchNumber(data['S']) ?? 0,
+            RegexExtension.matchNumber(data['AP']) ?? 0,
             data['D']
         )
 
