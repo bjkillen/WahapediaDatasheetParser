@@ -1,5 +1,6 @@
 import { DiceRerollModifierValue, DiceSkillValue, RegexExtension, StratagemEffect } from "gamesworkshopcalculator.common";
 import CSVParser from "./CSVParser";
+import StringExtension from "../extensions/StringExtension";
 
 class StratagemEffectParser {
     static async ParseFile(path: string) {
@@ -15,23 +16,23 @@ class StratagemEffectParser {
             data["faction_id"],
             RegexExtension.matchNumber(data["cp_cost"] ?? ""),
             data["restriction"],
-            new Boolean(data["question"]).valueOf(),
+            StringExtension.parseBoolean(data["question"]),
             RegexExtension.matchNumber(data['sustained_hits'] ?? ""),
             DiceSkillValue.parseDescription(data['critical_hits']),
             DiceSkillValue.parseDescription(data['critical_wounds']),
-            new Boolean(data["-1_damage"]).valueOf(),
+            StringExtension.parseBoolean(data["-1_damage"]),
             DiceSkillValue.parseDescription(data['fnp']),
-            new Boolean(data['to_wound_+1']).valueOf(),
+            StringExtension.parseBoolean(data['to_wound_+1']),
             DiceRerollModifierValue.parseDescriptionLower(data['reroll_hits']),
             RegexExtension.matchNumber(data['bonus_attacks'] ?? ""),
-            new Boolean(data['stealth']).valueOf(),
+            StringExtension.parseBoolean(data['stealth']),
             RegexExtension.matchNumber(data['bonus_ap'] ?? ""),
             RegexExtension.matchNumber(data['bonus_strength'] ?? ""),
             DiceSkillValue.parseDescription(data['set_bs']),
-            new Boolean(data['to_hit_+1']).valueOf(),
+            StringExtension.parseBoolean(data['to_hit_+1']),
             DiceSkillValue.parseDescription(data['set_inv']),
-            new Boolean(data['to_wound_-1']).valueOf(),
-            new Boolean(data['lethal_hits']).valueOf(),
+            StringExtension.parseBoolean(data['to_wound_-1']),
+            StringExtension.parseBoolean(data['lethal_hits']),
             []
         );
 

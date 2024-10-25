@@ -12,7 +12,7 @@ class StratagemQuestionParser {
     private static mapToStratagemQuestionEntry(data: any): StratagemQuestion  {
         const value = new StratagemQuestion(
             data["stratagem_id"],
-            data["question_id"],
+            data["question_text"],
             data["modifier"] ?? 0
         );
 
