@@ -1,4 +1,4 @@
-import { Faction } from "gamesworkshopcalculator.common";
+import { Faction, FactionStratagems } from "gamesworkshopcalculator.common";
 import WahapediaExportParser from "./WahapediaExportParser";
 
 class FactionParser {
@@ -8,6 +8,20 @@ class FactionParser {
 
     private static mapToFactionEntry(data: any): [string, Faction]  {
         const value = new Faction (
+            data['id'],
+            data['name'] ?? '',
+            []
+        )
+
+        return [value.id, value];
+    }
+
+    static async ParseFileForStratagems(path: string) {
+        return await WahapediaExportParser.ParseFileMapped<FactionStratagems>(path, this.mapToFactionStratagemEntry);
+    }
+
+    private static mapToFactionStratagemEntry(data: any): [string, FactionStratagems]  {
+        const value = new FactionStratagems (
             data['id'],
             data['name'] ?? '',
             []
