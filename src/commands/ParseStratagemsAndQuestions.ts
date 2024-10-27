@@ -6,7 +6,7 @@ import path from "path";
 import StratagemParser from "../models/StratagemParser";
 import StratagemEffectParser from "../models/StratagemEffectParser";
 import StratagemQuestionParser from "../models/StratagemQuestionParser";
-import { FactionStratagemsMap, TypedJSON } from "gamesworkshopcalculator.common";
+import { DetachmentStratagems, FactionStratagemsMap, TypedJSON } from "gamesworkshopcalculator.common";
 import FactionParser from "../models/FactionParser";
 
 export default class ParseStratagemsAndQuestions extends Command {
@@ -41,18 +41,27 @@ export default class ParseStratagemsAndQuestions extends Command {
 			}
         })
 
-        const factionStratagemResults = await FactionParser.ParseFileForStratagems(
+        const factionDetachmentResults = await FactionParser.ParseFileForStratagems(
 			path.join(args.srcDir, 'Factions.csv'));
 
         stratagemResults.forEach((sr) => {
-			if (factionStratagemResults.has(sr.factionID)) {
-				factionStratagemResults.get(sr.factionID).stratagems.push(sr);
+			if (factionDetachmentResults.has(sr.factionID)) {
+                const factionDetachments = factionDetachmentResults.get(sr.factionID);
+
+				if (!factionDetachments.detachments.has(sr.detachment)) {
+                    factionDetachments.detachments.set(sr.detachment, new DetachmentStratagems(
+                        sr.detachment,
+                        []
+                    ));
+                }
+
+                factionDetachments.detachments.get(sr.detachment)?.stratagems.push(sr);
 			}
 		});
 
         const serializer = new TypedJSON(FactionStratagemsMap);
 
-        const data = serializer.stringify(new FactionStratagemsMap(factionStratagemResults));
+        const data = serializer.stringify(new FactionStratagemsMap(factionDetachmentResults));
 
 		fs.writeFile(`ExportedStratagems.json`, data, (error) => {
 			if (error) {
@@ -62,6 +71,7 @@ export default class ParseStratagemsAndQuestions extends Command {
 				throw error;
 			}
 
+            console.log(`Factions Parsed: ${factionDetachmentResults.size}`);
 			console.log(`Stratagems Parsed: ${stratagemResults.size}`);
 			console.log(`Stratagem Effects Parsed: ${stratagemEffectResults.size}`);
 			console.log(`Stratagem Questions Parsed: ${stratagemQuestionResults.length}`);

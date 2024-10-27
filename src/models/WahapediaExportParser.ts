@@ -1,7 +1,12 @@
 import CSVParser from "./CSVParser";
 
 class WahapediaExportParser extends CSVParser {
-    static override columnSeparator = "|";
+    protected static override columnSeparator = "|";
+    protected static override baseCsvOptions = {
+        separator: this.columnSeparator,
+        mapHeaders: ({ header }) => header.trim(),
+        quote: ''
+    };
 }
 
 export default WahapediaExportParser;

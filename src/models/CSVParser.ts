@@ -2,13 +2,13 @@ import csv from "csv-parser";
 import fs from "fs";
 
 class CSVParser {
-    static columnSeparator = ",";
+    protected static columnSeparator = ",";
 
-    static baseCsvOptions = {
-            separator: this.columnSeparator,
-            mapHeaders: ({ header }) => header.trim(),
-            quote: ''
-        };
+    protected static baseCsvOptions = {
+        separator: this.columnSeparator,
+        mapHeaders: ({ header }) => header.trim(),
+        quote: ''
+    };
 
     static async ParseFile<Type>(path: string, mapFunc: (data: any) => Type) {
         let results: Type[] = [];
