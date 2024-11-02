@@ -1,4 +1,4 @@
-import { DiceRerollModifierValue, DiceSkillValue, RegexExtension, StratagemEffect } from "gamesworkshopcalculator.common";
+import { DiceRerollModifierValue, DiceSkillValue, RegexExtension, StratagemEffect, StratagemType } from "gamesworkshopcalculator.common";
 import CSVParser from "./CSVParser";
 import StringExtension from "../extensions/StringExtension";
 
@@ -17,6 +17,7 @@ class StratagemEffectParser {
             RegexExtension.matchNumber(data["cp_cost"] ?? ""),
             data["restriction"],
             StringExtension.parseBoolean(data["question"]),
+            StratagemType.parseDescriptionLower(data["type"]),
             RegexExtension.matchNumber(data['sustained_hits'] ?? ""),
             DiceSkillValue.parseDescription(data['critical_hits']),
             DiceSkillValue.parseDescription(data['critical_wounds']),
@@ -33,6 +34,7 @@ class StratagemEffectParser {
             DiceSkillValue.parseDescription(data['set_inv']),
             StringExtension.parseBoolean(data['to_wound_-1']),
             StringExtension.parseBoolean(data['lethal_hits']),
+            RegexExtension.matchNumber(data["reduce_ap"] ?? ""),
             []
         );
 
