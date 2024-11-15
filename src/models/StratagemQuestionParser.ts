@@ -24,7 +24,7 @@ class StratagemQuestionParser {
             RegexExtension.matchNumber(data['bonus_attacks'] ?? ""),
             StringExtension.parseBoolean(data['stealth']),
             RegexExtension.matchNumber(data['bonus_ap'] ?? ""),
-            RegexExtension.matchNumber(data['bonus_strength'] ?? ""),
+            RegexExtension.matchNumber(data['bonus_str'] ?? ""),
             DiceSkillValue.parseDescription(data['set_bs']),
             StringExtension.parseBoolean(data['to_hit_+1']),
             DiceSkillValue.parseDescription(data['set_inv']),
