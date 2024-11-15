@@ -1,4 +1,4 @@
-import { DiceRerollModifierValue, DiceSkillValue, RegexExtension, StratagemEffect, StratagemType } from "gamesworkshopcalculator.common";
+import { DiceRerollModifierValue, DiceSkillValue, Keyword, RegexExtension, StratagemEffect, StratagemType } from "gamesworkshopcalculator.common";
 import CSVParser from "./CSVParser";
 import StringExtension from "../extensions/StringExtension";
 
@@ -11,11 +11,19 @@ class StratagemEffectParser {
     }
 
     private static mapToStratagemEffectEntry(data: any): [string, StratagemEffect]  {
+        let datasheetRestrictions = [];
+
+        if (data["restriction"] != null && (data["restriction"] as string).length > 0) {
+            datasheetRestrictions = data["restriction"]
+                ?.split("-")
+                .map((dr: string) => new Keyword(undefined, dr));
+        }
+
         const value = new StratagemEffect(
             data["id"],
             data["faction_id"],
             RegexExtension.matchNumber(data["cp_cost"] ?? ""),
-            data["restriction"],
+            datasheetRestrictions ?? [],
             StringExtension.parseBoolean(data["question"]),
             StratagemType.parseDescriptionLower(data["type"]),
             RegexExtension.matchNumber(data['sustained_hits'] ?? ""),
