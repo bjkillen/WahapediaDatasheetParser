@@ -31,6 +31,10 @@ class StratagemQuestionParser {
             StringExtension.parseBoolean(data['to_wound_-1']),
             StringExtension.parseBoolean(data['lethal_hits']),
             RegexExtension.matchNumber(data["reduce_ap"] ?? ""),
+            StringExtension.parseBoolean(data["dev_wounds"]),
+            DiceRerollModifierValue.parseDescriptionLower(data['reroll_wounds']),
+            RegexExtension.matchNumber(data['bonus_damage']),
+            StringExtension.parseBoolean(data["transhuman"]),
         );
 
         return value;
